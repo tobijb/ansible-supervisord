@@ -34,6 +34,7 @@
     - supervisor
     - supervisord
 
+
 - name: Link Supervisord conf
   sudo: yes
   file:
@@ -41,6 +42,17 @@
     dest: "{{supervisord_conf_file_link}}"
     state: link
   notify: restart supervisord
+  tags:
+    - conf
+    - supervisor
+    - supervisord
+
+- name: Configure Supervisord Includes
+  copy:
+    src: '{{ item }}'
+    dest: '{{ supervisord_additional_conf_dir }}/{{ item | basename }}'
+  with_flattened:
+    - '{{ supervisord_additional_conf_files }}'
   tags:
     - conf
     - supervisor

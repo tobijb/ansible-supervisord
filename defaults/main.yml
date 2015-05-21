@@ -203,11 +203,8 @@ supervisord_min_procs: 200
 # Include
 # -------
 
-# A list of file globs. Each file glob may be absolute or relative. If the file
-# glob is relative, it is considered relative to the location of the
-# configuration file which includes it. A “glob” is a file pattern which matches
-# a specified pattern according to the rules used by the Unix shell. No tilde
-# expansion is done, but *, ?, and character ranges expressed with [] will be
-# correctly matched. Recursive includes from included files are not supported.
-supervisord_additional_conf_files:
-  - "{{supervisord_additional_conf_dir}}/*.conf"
+# A list of files to copy to the remote server.  These should be put in a
+# directory relative to the ansible directory.  These are not templatized.
+# The filename will be used when placing them into supervisord_additional_conf_dir.
+supervisord_additional_conf_files: []
+  #- "files/supervisord/unicorn-store.ini"
