@@ -51,6 +51,7 @@
   copy:
     src: '{{ item }}'
     dest: '{{ supervisord_additional_conf_dir }}/{{ item | basename }}'
+  notify: restart supervisord
   with_flattened:
     - '{{ supervisord_additional_conf_files }}'
   tags:

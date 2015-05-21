@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/bash
 #
 # WARNING: This file is auto-generated from the provisioning
 #          scripts. Do not edit by hand because your changes
@@ -26,6 +26,7 @@
 #                    subprocesses.
 ### END INIT INFO
 
+. /etc/profile
 . /lib/lsb/init-functions
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin

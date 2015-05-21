@@ -13,7 +13,7 @@ supervisord_service_name: "{{supervisord_identifier}}"
 
 supervisord_bin_dir:     /usr/bin
 supervisord_conf_dir:    /etc/supervisor
-supervisord_runtime_dir: /var/run
+supervisord_runtime_dir: /var/run/supervisor
 
 supervisord_conf_file: "{{supervisord_conf_dir}}/supervisord.conf"
 supervisord_conf_file_link: "/etc/supervisord.conf"  # FIXME: This is too hardcoded
@@ -49,7 +49,7 @@ supervisord_environment: {}
 # If supervisord is run as the root user, switch users to this UNIX user account
 # before doing any meaningful processing. This value has no effect if
 # supervisord is not run as root.
-supervisord_user:
+supervisord_user: root
 
 # When supervisord daemonizes, switch to this directory. This option can include
 # the value %(here)s, which expands to the directory in which the supervisord

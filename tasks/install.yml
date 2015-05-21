@@ -29,3 +29,12 @@
     - deps
     - supervisor
     - supervisord
+
+- name: Create necessary dirs
+  file:
+    state: directory
+    path: '{{ item }}'
+    owner: '{{ supervisord_user }}'
+  with_items:
+    - '{{ supervisord_runtime_dir }}'
+    - '{{ supervisord_logs_dir }}'
