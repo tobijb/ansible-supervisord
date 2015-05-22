@@ -13,10 +13,12 @@
   file:
     dest: "{{item}}"
     state: directory
+    owner: "{{ supervisord_user }}"
   with_items:
     - "{{supervisord_conf_dir}}"
     - "{{supervisord_additional_conf_dir}}"
     - "{{supervisord_logs_dir}}"
+    - "{{supervisord_runtime_dir}}"
   notify: restart supervisord
   tags:
     - conf

@@ -34,6 +34,7 @@ DAEMON={{supervisord_daemon}}
 SUPERVISORCTL={{supervisord_supervisorctl}}
 NAME={{supervisord_service_name}}
 DESC=Supervisor
+SERVICE_USER={{supervisord_user}}
 
 test -x $DAEMON || exit 0
 
@@ -55,6 +56,11 @@ fi
 DAEMON_OPTS="-c /etc/supervisor/supervisord.conf $DAEMON_OPTS"
 
 set -e
+
+# If the run dir isn't in existence, create it.
+test ! -d $(dirname ${PIDFILE}) && install -o ${SERVICE_USER} -d $(dirname ${PIDFILE})
+# Verify whoever is running supervisord owns the logs
+chown ${SERVICE_USER} -R ${LOGDIR}
 
 running_pid()
 {
