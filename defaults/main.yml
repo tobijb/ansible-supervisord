@@ -208,3 +208,25 @@ supervisord_min_procs: 200
 # The filename will be used when placing them into supervisord_additional_conf_dir.
 supervisord_additional_conf_files: []
   #- "files/supervisord/unicorn-store.ini"
+
+# Dynamic Service Definition
+# ---------
+
+supervisord_service_default_directory: ""
+supervisord_service_default_user: ""
+supervisord_service_default_environment: "ENV_VAR1=value,ENV_VAR2=value"
+supervisord_service_default_autorestart: false
+supervisord_service_default_autostart: false
+supervisord_service_default_stopwaitsecs: 10
+
+### Definitions
+global_supervisord_services: {}
+specific_supervisord_services: {}
+#global_supervisord_services:
+#  - name:
+#    command:
+#    environment:
+#    autorestart:
+#    autostart:
+#    user:
+#    ... Check the template

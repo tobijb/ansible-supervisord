@@ -91,3 +91,10 @@
     - conf
     - supervisor
     - supervisord
+
+- name: Create supervisord templated config files
+  sudo: yes
+  template:
+    src: supervisord-services.ini
+    dest: '{{ supervisord_additional_conf_dir }}'
+    mode: 0644
